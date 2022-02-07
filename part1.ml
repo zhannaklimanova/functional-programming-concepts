@@ -3,8 +3,8 @@ let domain () =
     failwith "REMINDER: You should not be writing tests for undefined values."
     
 (* 
-   Test cases for the fact : int -> float function.
-   It is assumed that n will not be greater than 0.
+  Test cases for the fact : int -> float function.
+  It is assumed that n will not be greater than 0.
 *)
 (*
 let fact_tests = [
@@ -18,7 +18,7 @@ let fact_tests = [
 *)
 
 (* 
-   fact : int -> float calculates the factorial of a number n; where n >= 0.
+  fact : int -> float calculates the factorial of a number n; where n >= 0.
 *)
 let rec fact (n: int): float = match n with
   | 0 -> 1.
@@ -26,8 +26,8 @@ let rec fact (n: int): float = match n with
 
 
 (* 
-   Test cases for the binomial : int -> int -> float function.
-   It is assumed that n >= k >= 0.
+  Test cases for the binomial : int -> int -> float function.
+  It is assumed that n >= k >= 0.
 *)
 (*
 let binomial_tests = [ 
@@ -44,8 +44,8 @@ let binomial_tests = [
 *)
 
 (* 
-   binomial : int -> int -> float calculates the binomial coefficient;
-   where n >= k >= 0.
+  binomial : int -> int -> float calculates the binomial coefficient;
+  where n >= k >= 0.
 *)
 let binomial (n: int) (k: int) =
   if n < 0 || k < 0 then domain () 
@@ -54,7 +54,7 @@ let binomial (n: int) (k: int) =
 
 
 (* 
-   Test cases for the distance : (int * int) -> (int * int) -> float function.
+  Test cases for the distance : (int * int) -> (int * int) -> float function.
 *)
 (*
 let distance_tests = [ (* write more test cases for testing all quadrants *)
@@ -72,8 +72,8 @@ let distance_tests = [ (* write more test cases for testing all quadrants *)
 *)
 
 (* 
-   distance : (int * int) -> (int * int) -> float computes the Euclidean distance
-   between two points.
+  distance : (int * int) -> (int * int) -> float computes the Euclidean distance
+  between two points.
 *)
 let distance ((x1, y1): (int * int)) ((x2, y2): (int * int)) : float =
   let dx = x2 - x1 in
@@ -82,7 +82,7 @@ let distance ((x1, y1): (int * int)) ((x2, y2): (int * int)) : float =
 
     
 (* 
-   Test cases for the ackerman : int * int -> int function. 
+  Test cases for the ackerman : int * int -> int function. 
 *)
 (*
 let ackerman_tests = [ 
@@ -101,7 +101,7 @@ let ackerman_tests = [
 *)
 
 (* 
-   ackerman : int * int -> int; where n >= 0 and k >= 0.
+  ackerman : int * int -> int; where n >= 0 and k >= 0.
 *)
 let ackerman (n, k)  =
   if n < 0 || k < 0 then domain ()
@@ -114,7 +114,7 @@ let ackerman (n, k)  =
      
 
 (* 
-   Test cases for the is_prime : int -> bool function. 
+  Test cases for the is_prime : int -> bool function. 
 *)
 (*
 let is_prime_tests = [ 
@@ -141,7 +141,7 @@ let is_prime_tests = [
 *)
 
 (* 
-   is_prime : int -> bool tests whether the input value is prime; where n > 1.
+  is_prime : int -> bool tests whether the input value is prime; where n > 1.
 *)
 let is_prime n = 
   let rec prime n x = match n with
@@ -156,7 +156,7 @@ let is_prime n =
 
 
 (* 
-   Test cases for the Reimann zeta function: float -> bool function. 
+  Test cases for the Reimann zeta function: float -> bool function. 
 *)
 (*
 let zeta_tests = [
@@ -170,8 +170,8 @@ let zeta_tests = [
 *)
 
 (* 
-   zeta : float -> float is an approximation of the Reimann zeta function which 
-   computes the infinite sum of n^-k; where n > 1 and k >= 2.
+  zeta : float -> float is an approximation of the Reimann zeta function which 
+  computes the infinite sum of n^-k; where n > 1 and k >= 2.
 *)
 let zeta (k: float) : float = 
   let rec approx_zeta k acc n sum_so_far = 
@@ -185,7 +185,7 @@ let zeta (k: float) : float =
 
    
  (* 
-   Test cases for the square_root : float -> float function.  
+  Test cases for the square_root : float -> float function.  
 *)
 (*
 let square_root_tests = [ 
@@ -201,8 +201,8 @@ let square_root_tests = [
 *)
   
 (* 
-   square_root : float -> float function approximates the square root of a 
-   number using the Newton-Raphson method; where a > 0. 
+  square_root : float -> float function approximates the square root of a 
+  number using the Newton-Raphson method; where a > 0. 
 *)
 let square_root a =
   let rec findroot x acc =
@@ -218,7 +218,7 @@ let square_root a =
   
   
 (* 
-   Test cases for the fib_tl : int -> int function.
+  Test cases for the fib_tl : int -> int function.
 *)
 (*
 let fib_tl_tests = [ 
@@ -236,15 +236,15 @@ let fib_tl_tests = [
 *)
 
 (* 
-   fib_aux : int -> int -> int -> int calculates the fibonacci value at index n.
+  fib_aux : int -> int -> int -> int calculates the fibonacci value at index n.
 *)
 let rec fib_aux n a b = 
   if n = 0 then a
   else let n' = n - 1 in fib_aux (n') (b) (a+b)
   
 (* 
-   fib_tl : int -> int calls fib_aux to calculate the Fibonacci value at index
-   n; where n >= 0. 
+  fib_tl : int -> int calls fib_aux to calculate the Fibonacci value at index
+  n; where n >= 0. 
 *)
 let fib_tl n =
   if n < 0 then domain ()
