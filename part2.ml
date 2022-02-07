@@ -175,7 +175,63 @@ let tree6 = Branch (5., [Branch (3., [Leaf; Leaf; Leaf]);
                          Branch (4., [])]) ;;
 let tree7 = Branch (4., []) ;; 
 let tree8 = Branch (3., [Branch (3., [Branch (2., []); Leaf; Leaf])]) ;;
-
+let tree9 = (Branch (51.9977478483348321,
+              [Branch (20.7138282542315046,
+                [Branch (3.9847785029833318,
+                  [Leaf; Leaf; Branch (2.21814703383210654, [Leaf]); Leaf]);
+                Branch (6.83920483396512,
+                  [Branch (4.09638867093755188, [Leaf; Leaf])]);
+                Branch (14.014974610314086,
+                  [Branch (1.12056568624224839, [Leaf; Leaf]);
+                  Branch (9.70365780434576308,
+                    [Branch (2.13209657782730311, [Leaf; Leaf; Leaf]);
+                    Branch (3.80544824968402784, [Leaf; Leaf; Leaf]);
+                    Branch (2.48090433842469649, [Leaf])]);
+                  Leaf]);
+                Leaf]);
+              Branch (7.52830335185880628,
+                [Leaf; Branch (0.245898410221691566, [Leaf; Leaf; Leaf]);
+                Branch (5.54128479998886814,
+                  [Branch (2.17799234705562661, [Branch (1.52258552253849855, [Leaf])]);
+                  Branch (2.7263467062697635, [Leaf; Leaf])])]);
+              Branch (36.0843586490757886,
+                [Branch (0.466370886624081771, [Leaf; Leaf]);
+                Branch (3.64682851673227759,
+                  [Branch (1.04686264816911, [Leaf; Leaf]); Leaf;
+                  Branch (1.43574568590117879, [Leaf; Leaf])]);
+                Branch (26.7659068171790224,
+                  [Branch (5.49349739004023352,
+                    [Leaf; Branch (1.43494094978208575, [Leaf; Leaf; Leaf; Leaf]);
+                    Branch (4.41839898215638183, [Leaf])])])]);
+              Branch (12.1508271144725644,
+                [Branch (2.88674128081462555,
+                  [Branch (0.665729850487968511,
+                    [Branch (0.210391625355443534, [Leaf; Leaf; Leaf; Leaf]); Leaf])]);
+                Branch (3.63203730459603147, [Branch (1.81172364514186368, [Leaf])]);
+                Branch (8.5857946467734525,
+                  [Leaf;
+                  Branch (3.11315246377692789,
+                    [Branch (1.80921182376222078, [Leaf]);
+                    Branch (1.50907272058893782, [Leaf; Leaf; Leaf; Leaf]); Leaf]);
+                  Leaf])])]));;
+let tree10 = (Branch (96.9458357991820776,
+                [Branch (51.9860666792418229,
+                [Branch (59.917700686521556,
+                  [Branch (68.9111188804677113, [Leaf; Leaf; Leaf])]);
+                  Leaf]);
+                Branch (128.423230075951238,
+                [Branch (70.1466013460413791,
+                  [Branch (76.2351592194399,
+                    [Branch (56.241344079065712, [Leaf; Leaf])])])])]));;
+let tree11 = (Branch (46.074634817048981,
+                [Branch (12.1274715435179, [Leaf]);
+                Branch (2.9735111669657921,
+                  [Branch (1.15865187234968703, [Leaf; Leaf]);
+                  Branch (1.76113012363069599, [Leaf; Leaf])]);
+                Branch (26.3195487217758277,
+                  [Leaf; Branch (5.22567184801709583, [Leaf])]);
+                Branch (3.82379922022979457,
+                  [Branch (2.19284421818360542, [Leaf; Leaf])])]));;
 (* 
  Test cases for the passes_da_vinci: tree -> bool function.
 *)
@@ -189,7 +245,10 @@ let passes_da_vinci_tests : (tree * bool) list = [
   (tree5, true);
   (tree6, false);
   (tree7, true); 
-  (tree8, true) 
+  (tree8, true);
+  (tree9, true);
+  (tree10, false);
+  (tree11, true)
 ] ;;
 *)
 
