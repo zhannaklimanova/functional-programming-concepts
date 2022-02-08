@@ -127,7 +127,7 @@ let convert_dist ((from_unit, val_) : dist_unit value) to_unit : dist_unit value
          | Meter -> (Meter, (val_ *. 1609.344)))
     | (Meter, _) ->
         (match to_unit with
-         | Foot -> (Foot, (val_ /. 0.3048)) (* Foot -> (Foot, (val_ *. 3.280839895))*)
+         | Foot -> (Foot, (val_ /. 0.3048))
          | Mile -> (Mile, (val_ /. 1609.344))
          | Meter -> (Meter, val_))
   
