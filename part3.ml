@@ -48,7 +48,6 @@ let c3 = Cupcake (3.05, 100.4, 303, [Dairy; Gluten; Nuts])
 let c4 = Cupcake (3.25, 120.4, 330, [Dairy; Gluten ])
 let cupcakes = [c1 ; c2 ; c3 ; c4]
 
-
 (*--------------------------------------------------------------*)
 (* SECTION 1 : String to Characters to String                   *)
 (*--------------------------------------------------------------*)
@@ -99,25 +98,6 @@ let pascal (max : int) : int list list =
     (fun list -> (list, List.map2 (+) (0 :: list) (list @ [0]))) 
     (fun list -> max + 1 <= List.length list) 
     [1] 
-  
-(* 
- zip1 : 'a list -> 'b list -> ('a * 'b) list converts two lists into a list of 
- tuples.
- e.g. zip [1; 2] ['a'; 'c'] = [(1, 'a'); (2, 'c')]
- e.g. zip [1; 2] ['a'] = [(1, 'a')]
-
- Note: if one list is shorter than the other, then the 
- resulting list has the length of the smaller list.     
-*) 
-
-let zip1 (l1 : 'a list) (l2 : 'b list) : ('a * 'b) list =
-  unfold 
-    (fun (c, (a, b)) -> 
-       if c + 1 >= (min (List.length l1) (List.length l2)) then 
-         ((List.nth l1 (c-1), List.nth l2 (c-1)), (c + 1, (List.nth l1 (c-1), List.nth l2 (c-1)))) 
-       else ((a, b), (c + 1, (List.nth l1 (c), List.nth l2 (c)))))
-    (fun (c, (a, b)) -> c > (min (List.length l1) (List.length l2)))
-    (1, (List.hd l1, List.hd l2)) 
   
 (* 
  zip : 'a list -> 'b list -> ('a * 'b) list converts two lists into a list of 
