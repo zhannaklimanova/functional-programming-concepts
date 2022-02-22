@@ -4,8 +4,10 @@ let domain () =
 
 
 (*----------------------------------------------------------------*)
-(* SECTION 1: String to Characters to String- Function tabulate *)
+(* SECTION 1: String to Characters to String- Function tabulate   *)
 (* tabulate f n returns [f 0; f 1; ...; f (n - 1)]                *)
+(* e.g.                                                           *)
+(* tabulate (fun x -> x) 10 is [0; 1; 2; 3; 4; 5; 6; 7; 8; 9]     *)
 (*----------------------------------------------------------------*)
 
 let rec tabulate f n =
