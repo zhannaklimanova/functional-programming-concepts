@@ -1,6 +1,6 @@
 exception NotImplemented
 let domain () =
-    failwith "REMINDER: You should not be writing tests for undefined values."
+    failwith "REMINDER: You should not be writing tests for undefined values." ;;
 
 
 (*----------------------------------------------------------------*)
@@ -16,6 +16,7 @@ let rec tabulate f n =
     else tab (n - 1) ((f n) :: acc)
   in
   tab (n - 1) []
+;;
 
 (*---------------------------------------------------*)
 (* SECTION 2 : Unfolding is like folding in reverse *)
@@ -27,6 +28,7 @@ let rec unfold (f : 'seed -> 'a * 'seed) (stop : 'seed -> bool) (b : 'seed) : 'a
   else
     let (x, b') = f b in
     x :: unfold f stop b'
+;;
 
 (*
  Example function using `unfold`. Generates a list of natural numbers less than `max`.
@@ -44,11 +46,11 @@ type ingredient = Nuts | Gluten | Soy | Dairy
 type cupcake = Cupcake of price * weight * calories * ingredient list
 
 (* Example Cupcakes and cupcake list.*)
-let c1 = Cupcake (2.5, 80.3, 250, [Dairy; Nuts])
-let c2 = Cupcake (2.75, 90.5, 275, [Dairy; Soy])
-let c3 = Cupcake (3.05, 100.4, 303, [Dairy; Gluten; Nuts])
-let c4 = Cupcake (3.25, 120.4, 330, [Dairy; Gluten ])
-let cupcakes = [c1 ; c2 ; c3 ; c4]
+let c1 = Cupcake (2.5, 80.3, 250, [Dairy; Nuts]) ;;
+let c2 = Cupcake (2.75, 90.5, 275, [Dairy; Soy]) ;;
+let c3 = Cupcake (3.05, 100.4, 303, [Dairy; Gluten; Nuts]) ;;
+let c4 = Cupcake (3.25, 120.4, 330, [Dairy; Gluten ]) ;;
+let cupcakes = [c1 ; c2 ; c3 ; c4] ;;
 
 (*--------------------------------------------------------------*)
 (* SECTION 1 : String to Characters to String                   *)
@@ -59,12 +61,14 @@ let cupcakes = [c1 ; c2 ; c3 ; c4]
 *)
 let string_explode (s : string) : char list = 
   tabulate (String.get s) (String.length s)
+;;
 
 (*
  string_implode : char list -> string turns a list of characters into a string.
 *)
 let string_implode (l : char list) : string =
   List.fold_right (fun a -> (^) (Char.escaped a)) l ""
+;;
 
 (*--------------------------------------------------------------*)    
 (* SECTION 2: unfolding is like folding in reverse              *)
@@ -79,6 +83,7 @@ let evens (max : int) : int list =
     (fun b -> (b, 2 + b)) 
     ((<=) max) 
     0
+;;
 
 (* 
  fib : int -> int list computes the Fibonacci sequence up to an exclusive limit. 
@@ -88,6 +93,7 @@ let fib (max : int) : int list =
     (fun (a, b) -> a, (b, a + b)) 
     (fun (a, b) -> max <= a) 
     (1, 1)
+;;
     
 (*
  pascal : int -> int list list computes Pascal's triangle up to a maximum row 
@@ -99,7 +105,8 @@ let pascal (max : int) : int list list =
   unfold 
     (fun list -> (list, List.map2 (+) (0 :: list) (list @ [0]))) 
     (fun list -> max + 1 <= List.length list) 
-    [1] 
+    [1]
+;;
   
 (* 
  zip : 'a list -> 'b list -> ('a * 'b) list converts two lists into a list of 
@@ -119,6 +126,7 @@ let zip (l1 : 'a list) (l2 : 'b list) : ('a * 'b) list =
        | (h1 :: t1, h2 :: t2) -> ((h1, h2), (t1, t2)))
     (fun (a, b) -> a = [] || b = [])
     (l1, l2)
+;;
   
 (* 
  zip2 : 'a list -> 'b list -> ('a * 'b) list converts two lists into a list of 
@@ -139,7 +147,8 @@ let zip2 (l1 : 'a list) (l2 : 'b list) : ('a * 'b) list =
            ((List.nth l1 (c-1), List.nth l2 (c-1)), (c + 1, (List.nth l1 (c-1), List.nth l2 (c-1)))) 
          else ((a, b), (c + 1, (List.nth l1 (c), List.nth l2 (c)))))
       (fun (c, (a, b)) -> c > (min (List.length l1) (List.length l2)))
-      (1, (List.hd l1, List.hd l2)) 
+      (1, (List.hd l1, List.hd l2))
+;;
   
       
 (*--------------------------------------------------------------*)
@@ -160,7 +169,7 @@ let zip2 (l1 : 'a list) (l2 : 'b list) : ('a * 'b) list =
    Cupcake (3.93, 108.16, 331, [Dairy; Soy]);
    Cupcake (4.96, 85.86, 316, [Nuts]);
    Cupcake (2.45, 83.4, 263, [Dairy; Gluten; Soy]);
-   Cupcake (3.51, 96.18, 285, [Gluten])]
+   Cupcake (3.51, 96.18, 285, [Gluten])] ;
 
  e.g. OUTPUT
  [Cupcake (0.03, 91.65, 291, [Nuts]); 
@@ -172,6 +181,7 @@ let allergy_free (allergens : ingredient list) (cupcakes : cupcake list) : cupca
       (List.for_all (fun ingredient -> 
            not (List.exists ((=) ingredient) allergens)) 
           ingredients))
-    cupcakes 
+    cupcakes
+;;
 
     

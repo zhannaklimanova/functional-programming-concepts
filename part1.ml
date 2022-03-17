@@ -1,6 +1,6 @@
 exception NotImplemented
 let domain () =
-    failwith "REMINDER: You should not be writing tests for undefined values."
+    failwith "REMINDER: You should not be writing tests for undefined values." ;;
     
 (* 
   Test cases for the fact : int -> float function.
@@ -14,7 +14,8 @@ let fact_tests = [
   (5, 120.0);
   (13, 6227020800.0);
   (20, 2432902008176640000.0)
-] ;;
+] 
+;;
 *)
 
 (* 
@@ -22,7 +23,8 @@ let fact_tests = [
 *)
 let rec fact (n: int): float = match n with
   | 0 -> 1.
-  | _ -> float_of_int (n) *. fact (n - 1)
+  | _ -> float_of_int (n) *. fact (n - 1) 
+;;
 
 
 (* 
@@ -40,7 +42,8 @@ let binomial_tests = [
   ((10, 1), 10.); 
   ((8, 7), 8.);
   ((10, 2), 45.)
-] ;;
+] 
+;;
 *)
 
 (* 
@@ -50,7 +53,8 @@ let binomial_tests = [
 let binomial (n: int) (k: int) =
   if n < 0 || k < 0 then domain () 
   else (if k > n then domain ()
-        else fact (n) /. (fact (k) *. fact (n - k)))
+        else fact (n) /. (fact (k) *. fact (n - k))) 
+;;
 
 
 (* 
@@ -68,7 +72,8 @@ let distance_tests = [ (* write more test cases for testing all quadrants *)
   (((-8, 5), (-6, 6)), 2.236068);
   (((-2, 4), (7, 4)), 9.0);
   (((-9, -9), (9, 9)), 25.455844)
-] ;;
+] 
+;;
 *)
 
 (* 
@@ -78,7 +83,8 @@ let distance_tests = [ (* write more test cases for testing all quadrants *)
 let distance ((x1, y1): (int * int)) ((x2, y2): (int * int)) : float =
   let dx = x2 - x1 in
   let dy = y2 - y1 in
-  sqrt (float_of_int ((dx * dx) + (dy * dy)))
+  sqrt (float_of_int ((dx * dx) + (dy * dy))) 
+;;
 
     
 (* 
@@ -97,7 +103,8 @@ let ackerman_tests = [
   ((3,3), 61); (* n > 0, k > 0 *) 
   ((1,0), 2);
   ((3,10), 8189) 
-] ;;
+] 
+;;
 *)
 
 (* 
@@ -111,6 +118,7 @@ let ackerman (n, k)  =
           | (_, 0) -> ack (n-1) (1)
           | (_, _) -> ack (n-1) (ack n (k - 1))
         in ack n k) 
+;;
      
 
 (* 
@@ -137,7 +145,8 @@ let is_prime_tests = [
   (10000021, false);
   (10000022, false); 
   (15485863, true)
-] ;;
+] 
+;;
 *)
 
 (* 
@@ -153,6 +162,7 @@ let is_prime n =
   in 
   if n <= 1 then domain ()
   else prime n 2
+;;
 
 
 (* 
@@ -166,7 +176,8 @@ let zeta_tests = [
   (3.0, 1.2020569031595942853997381615114499907649862923404988817922715553);
   (2.12222, 1.54358);
   (2.0, 1.6449340668482264364724151666460251892189499012067984377355582293)
-] ;;
+]
+;;
 *)
 
 (* 
@@ -182,6 +193,7 @@ let zeta (k: float) : float =
   in 
   if k < 2. then domain () 
   else approx_zeta k epsilon_float 1. 0.
+;;
 
    
  (* 
@@ -197,7 +209,8 @@ let square_root_tests = [
   (100.99, 10.0494);
   (15.0, 3.873);
   (199999.326541, 447.21284)
-] ;;
+]
+;;
 *)
   
 (* 
@@ -215,6 +228,7 @@ let square_root a =
   if a > 0.
   then findroot 1. epsilon_float
   else domain ()
+;;
   
   
 (* 
@@ -232,7 +246,8 @@ let fib_tl_tests = [
   (11, 144);
   (12, 233);
   (14, 610)
-] ;;
+]
+;;
 *)
 
 (* 
@@ -240,7 +255,7 @@ let fib_tl_tests = [
 *)
 let rec fib_aux n a b = 
   if n = 0 then a
-  else let n' = n - 1 in fib_aux (n') (b) (a+b)
+  else let n' = n - 1 in fib_aux (n') (b) (a+b) ;;
   
 (* 
   fib_tl : int -> int calls fib_aux to calculate the Fibonacci value at index
@@ -249,5 +264,6 @@ let rec fib_aux n a b =
 let fib_tl n =
   if n < 0 then domain ()
   else fib_aux n 1 1
+;;
 
 

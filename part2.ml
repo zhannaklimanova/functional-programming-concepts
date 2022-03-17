@@ -32,7 +32,8 @@ let mode_tests: (int list * int) list = [
   (([1; 2]), 1);
   (([2; 2]), 2);
   (([0]), 0)
-] ;;
+]
+;;
 *)
 
 
@@ -57,6 +58,7 @@ let mode (l: 'a list) : 'a =
   in
   let sortedList = List.sort compare l in
   aux sortedList (List.hd sortedList, 1) (List.hd sortedList, 1)
+;;
     
     
 (* 
@@ -70,7 +72,8 @@ let pair_mode_tests: (int list * (int * int) ) list = [
   (([11; 5; 8; 19; 7; 3; 2; 4; 5; 1]), (2, 4));
   (([6; 2; 6; 2; 3]), (6, 2));
   (([9; 9; 9; 9; 9]), (9, 9))
-] ;;
+] 
+;;
 *)
 
 (* 
@@ -86,7 +89,8 @@ let pair_mode (l: 'a list) : 'a * 'a =
   in 
   if List.length l = 0 || List.length l = 1 
   then failwith "Undefined input: list length should be >= 2."
-  else recurse l [] 
+  else recurse l []
+;;
 
 (* SECTION 2 : Custom data types *)
 
@@ -106,6 +110,7 @@ let convert_time ((from_unit, val_) : time_unit value) to_unit : time_unit value
         (match to_unit with
          | Hour -> (Hour, val_ /. 3600.0)
          | Second -> (Second, val_)) 
+;;
                                      
 (* 
  convert_dis : dist_unit value -> dist_unit -> dist_unit value performs distance 
@@ -130,6 +135,7 @@ let convert_dist ((from_unit, val_) : dist_unit value) to_unit : dist_unit value
          | Foot -> (Foot, (val_ /. 0.3048))
          | Mile -> (Mile, (val_ /. 1609.344))
          | Meter -> (Meter, val_))
+;;
   
 (* 
  convert_speed : speed_unit value -> speed_unit -> speed_unit value performs 
@@ -143,6 +149,7 @@ let convert_speed ((from_unit, val_) : speed_unit value) to_unit : speed_unit va
     let timeMult = 1.0 /. (snd time') in
     let speed' = (fst distance', fst time') in
     (speed', (snd distance') *. timeMult)
+;;
 
 (* 
  add_speed : speed_unit value -> speed_unit value -> speed_unit value adds two 
@@ -150,7 +157,8 @@ let convert_speed ((from_unit, val_) : speed_unit value) to_unit : speed_unit va
 *)
 let add_speed (a : speed_unit value) ((b_unit, b_val) : speed_unit value) : speed_unit value = 
   let speed' = convert_speed a b_unit in
-  (b_unit, (snd speed') +. b_val) 
+  (b_unit, (snd speed') +. b_val)
+;;
 
 (* 
  dist_traveled : time_unit value -> speed_unit value -> dist_unit value 
@@ -160,6 +168,7 @@ let add_speed (a : speed_unit value) ((b_unit, b_val) : speed_unit value) : spee
 let dist_traveled time ((speed_unit, speed_val) : speed_unit value) : dist_unit value = 
   let time' = convert_time time (snd speed_unit) in
   ((fst speed_unit), (snd time' *. speed_val))
+;;
 
   
 (* SECTION 3 : recursive data types/induction *)
@@ -213,7 +222,7 @@ let tree9 = (Branch (51.9977478483348321,
                   Branch (3.11315246377692789,
                     [Branch (1.80921182376222078, [Leaf]);
                     Branch (1.50907272058893782, [Leaf; Leaf; Leaf; Leaf]); Leaf]);
-                  Leaf])])]));;
+                  Leaf])])])) ;;
 let tree10 = (Branch (96.9458357991820776,
                 [Branch (51.9860666792418229,
                 [Branch (59.917700686521556,
@@ -222,7 +231,7 @@ let tree10 = (Branch (96.9458357991820776,
                 Branch (128.423230075951238,
                 [Branch (70.1466013460413791,
                   [Branch (76.2351592194399,
-                    [Branch (56.241344079065712, [Leaf; Leaf])])])])]));;
+                    [Branch (56.241344079065712, [Leaf; Leaf])])])])])) ;;
 let tree11 = (Branch (46.074634817048981,
                 [Branch (12.1274715435179, [Leaf]);
                 Branch (2.9735111669657921,
@@ -231,7 +240,7 @@ let tree11 = (Branch (46.074634817048981,
                 Branch (26.3195487217758277,
                   [Leaf; Branch (5.22567184801709583, [Leaf])]);
                 Branch (3.82379922022979457,
-                  [Branch (2.19284421818360542, [Leaf; Leaf])])]));;
+                  [Branch (2.19284421818360542, [Leaf; Leaf])])])) ;;
 (* 
  Test cases for the passes_da_vinci: tree -> bool function.
 *)
@@ -249,7 +258,8 @@ let passes_da_vinci_tests : (tree * bool) list = [
   (tree9, true);
   (tree10, false);
   (tree11, true)
-] ;;
+]
+;;
 *)
 
 (* 
@@ -263,7 +273,8 @@ let leafCounter t =
     | [] -> 0
     | h :: t -> (countLeavesInTree h) + (countLeavesInTreeList t)
   in 
-  countLeavesInTree t 
+  countLeavesInTree t
+;;
                       
 (* 
  leafCounterTailRecursive : tree -> int finds the total number of leaves in a 
@@ -279,7 +290,8 @@ let leafCounterTailRecursive t =
         let acc' = countLeavesInTree head acc in
         countLeavesInTreeList tail acc'
   in 
-  countLeavesInTree t 0
+  countLeavesInTree t 0 
+;;
            
 (* 
  findSubtreeSum : tree list -> int finds the sum of squares of the immediate
@@ -293,6 +305,7 @@ let findSubtreeSum (subtree: tree list)  =
         let acc' = (width ** 2.) +. acc in
         findSumSquares t acc'
   in findSumSquares subtree 0.
+;;
   
 (*
 passes_da_vinci primer:
@@ -326,5 +339,6 @@ let passes_da_vinci t =
     | [] -> true 
     | h :: t -> ttf h && ctf t
   in 
-  ttf t 
+  ttf t
+;;
     
