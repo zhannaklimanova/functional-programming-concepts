@@ -36,7 +36,7 @@ let open_account (initial_pass: passwd) : bank_account =
           let _ = signInAttempt := 0 in
           currentPassword := newPassword; ());
     
-    retrieve = (fun password amount-> 
+    retrieve = (fun password amount -> 
         if !signInAttempt < 5 then
           if password <> !currentPassword then
             let _ = incr signInAttempt in 
@@ -50,7 +50,7 @@ let open_account (initial_pass: passwd) : bank_account =
               ()
         else raise too_many_failures);
     
-    deposit = (fun password -> fun amount -> 
+    deposit = (fun password amount -> 
         if !signInAttempt < 5 then
           if password <> !currentPassword then
             let _ = incr signInAttempt in 
